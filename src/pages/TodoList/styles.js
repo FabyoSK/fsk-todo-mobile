@@ -5,37 +5,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#222831',
   },
-  header: {
-    backgroundColor: '#f05454',
-    paddingVertical: 150,
-    borderBottomStartRadius: 32,
-    borderBottomEndRadius: 32,
-    marginBottom: 32,
-  },
   title: {
     color: '#dddddd',
-    fontSize: 52,
+    fontSize: 32,
     textAlign: 'center',
     fontWeight: '700',
   },
-
-  startButton: {
-    backgroundColor: '#3fad27',
-    marginVertical: 12,
-    marginHorizontal: 32,
-    borderRadius: 12,
-    padding: 22,
+  backButton: {
+    backgroundColor: '#f05454',
+    height: 50,
+    width: 50,
   },
-  githubButton: {
-    backgroundColor: '#30475e',
-    marginVertical: 12,
-    marginHorizontal: 32,
-    borderRadius: 12,
-    padding: 22,
-  },
-  buttonText: {
+  backButtonText: {
     color: '#dddddd',
-    fontSize: 32,
     textAlign: 'center',
   },
 });
