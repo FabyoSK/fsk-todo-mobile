@@ -54,7 +54,7 @@ const TodoList = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      <View style={styles.titleArea}>
         <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
           <Text style={styles.backButtonText}>Back</Text>
         </TouchableOpacity>
@@ -74,8 +74,8 @@ const TodoList = () => {
           onChangeText={text => setNewTodo(text)}
           placeholder="Add new todo"
         />
-        <TouchableOpacity style={styles.backButton} onPress={handleAddTodo}>
-          <Text>ADD</Text>
+        <TouchableOpacity style={styles.inputButton} onPress={handleAddTodo}>
+          <Text style={styles.inputButtonText}>ADD</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

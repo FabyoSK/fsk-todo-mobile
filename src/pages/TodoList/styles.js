@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#222831',
   },
+
   title: {
     color: '#dddddd',
     fontSize: 32,
@@ -15,6 +16,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f05454',
     height: 50,
     width: 50,
+    borderRadius: 8,
+    justifyContent: 'center',
   },
   backButtonText: {
     color: '#dddddd',
@@ -43,7 +46,9 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
   },
-  inputGroup: {},
+  inputGroup: {
+    flexDirection: 'row',
+  },
   input: {
     height: 54,
     backgroundColor: '#FFF',
@@ -52,6 +57,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginTop: 4,
     marginBottom: 16,
+    width: '80%',
+  },
+  inputButton: {
+    backgroundColor: '#f05454',
+    height: 54,
+    width: 50,
+    borderRadius: 8,
+    justifyContent: 'center',
+    width: '20%',
+    paddingHorizontal: 16,
+    marginTop: 4,
+    marginBottom: 16,
+  },
+  inputButtonText: {
+    textAlign: 'center',
   },
 });
 
