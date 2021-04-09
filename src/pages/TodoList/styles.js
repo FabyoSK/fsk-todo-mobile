@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 12,
     marginVertical: 12,
+    justifyContent: 'space-between',
   },
   todoItemText: {
     color: '#dddddd',

@@ -21,46 +21,50 @@ const TodoList = () => {
   }
 
   function handleAddTodo() {
-    setTodos([...todos, newTodo]);
+    if (!newTodo) {
+      return;
+    }
+    const todo = {
+      id: Math.random(),
+      content: newTodo,
+    };
+    setTodos([...todos, todo]);
     setNewTodo('');
   }
+  function handleDeleteTodo(id) {
+    const filtredTodo = todos.filter(todo => todo.id !== id);
+
+    setTodos(filtredTodo);
+  }
+  const TodoItem = ({todo}) => {
+    return (
+      <View style={styles.todoItem}>
+        <Text style={styles.todoItemText}>{todo.content}</Text>
+        <TouchableOpacity
+          style={styles.todoItemButton}
+          onPress={() => handleDeleteTodo(todo.id)}>
+          <Text>X</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  const showNoTodos = () => {
+    return <Text style={styles.title}>GG</Text>;
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
           <Text style={styles.backButtonText}>Back</Text>
         </TouchableOpacity>
-        <Text style={styles.title}>Your todo List {newTodo}</Text>
+        <Text style={styles.title}>Your todo List</Text>
       </View>
 
       <ScrollView style={styles.todoList}>
-        <View style={styles.todoItem}>
-          <Text style={styles.todoItemText}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus quae
-            aliquam corrupti placeat.
-          </Text>
-          <TouchableOpacity style={styles.todoItemButton}>
-            <Text>X</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.todoItem}>
-          <Text style={styles.todoItemText}>
-            Todo Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus
-            quae aliquam corrupti placeat.
-          </Text>
-          <TouchableOpacity style={styles.todoItemButton}>
-            <Text>X</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.todoItem}>
-          <Text style={styles.todoItemText}>
-            Todo Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus
-            quae aliquam corrupti placeat.
-          </Text>
-          <TouchableOpacity style={styles.todoItemButton}>
-            <Text>X</Text>
-          </TouchableOpacity>
-        </View>
+        {todos.map(todo => (
+          <TodoItem key={todo.id} todo={todo} />
+        ))}
       </ScrollView>
 
       <View style={styles.inputGroup}>
@@ -70,7 +74,7 @@ const TodoList = () => {
           onChangeText={text => setNewTodo(text)}
           placeholder="Add new todo"
         />
-        <TouchableOpacity onPress={handleAddTodo}>
+        <TouchableOpacity style={styles.backButton} onPress={handleAddTodo}>
           <Text>ADD</Text>
         </TouchableOpacity>
       </View>
