@@ -20,6 +20,28 @@ const styles = StyleSheet.create({
     color: '#dddddd',
     textAlign: 'center',
   },
+
+  todoList: {},
+  todoItem: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#30475e',
+    padding: 12,
+    flexDirection: 'row',
+    marginHorizontal: 12,
+    marginVertical: 12,
+  },
+  todoItemText: {
+    color: '#dddddd',
+    fontSize: 20,
+    lineHeight: 30,
+  },
+  todoItemButton: {
+    backgroundColor: '#f05454',
+    fontSize: 32,
+    width: 32,
+    height: 32,
+  },
 });
 
 export default styles;
