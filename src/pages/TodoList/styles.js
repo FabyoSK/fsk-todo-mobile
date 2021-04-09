@@ -42,6 +42,16 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
   },
+  inputGroup: {},
+  input: {
+    height: 54,
+    backgroundColor: '#FFF',
+    borderRadius: 8,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    marginTop: 4,
+    marginBottom: 16,
+  },
 });
 
 export default styles;
