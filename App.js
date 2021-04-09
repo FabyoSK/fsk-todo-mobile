@@ -5,18 +5,22 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle={'light-content'} />
       <View style={styles.header}>
         <Text style={styles.title}>Todo | FSK</Text>
       </View>
-      <Text style={styles.slogan}>Your Todo app</Text>
-      <View>
-        <TouchableOpacity>
-          <Text style={styles.title}>sss</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.startButton}>
+          <Text style={styles.buttonText}>View Todos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.githubButton}>
+          <Text style={styles.buttonText}>Github</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -30,21 +34,36 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#f05454',
-    padding: 100,
+    paddingVertical: 150,
     borderBottomStartRadius: 32,
     borderBottomEndRadius: 32,
+    marginBottom: 32,
   },
   title: {
+    color: '#dddddd',
+    fontSize: 52,
+    textAlign: 'center',
+    fontWeight: '700',
+  },
+
+  startButton: {
+    backgroundColor: '#3fad27',
+    marginVertical: 12,
+    marginHorizontal: 32,
+    borderRadius: 12,
+    padding: 22,
+  },
+  githubButton: {
+    backgroundColor: '#30475e',
+    marginVertical: 12,
+    marginHorizontal: 32,
+    borderRadius: 12,
+    padding: 22,
+  },
+  buttonText: {
     color: '#dddddd',
     fontSize: 32,
     textAlign: 'center',
   },
-  slogan: {
-    color: '#dddddd',
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  startButton: {},
-  startButtonText: {},
 });
 export default App;
