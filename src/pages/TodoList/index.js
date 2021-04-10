@@ -13,6 +13,7 @@ import {firebase} from '../../firebase/config';
 import {BorderlessButton} from 'react-native-gesture-handler';
 
 import styles from './styles';
+import {v4} from 'uuid';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -45,7 +46,7 @@ const TodoList = () => {
   function handleAddTodo() {
     if (newTodo && newTodo.length > 0) {
       const todo = {
-        id: 0,
+        id: v4(),
         content: newTodo,
       };
 
@@ -62,9 +63,6 @@ const TodoList = () => {
   }
   async function handleDeleteTodo(id) {
     const res = await todoRef.doc(id).delete();
-    // const filtredTodo = todos.filter(todo => todo.id !== id);
-
-    // setTodos(filtredTodo);
   }
   const TodoItem = ({todo}) => {
     return (
