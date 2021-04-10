@@ -43,11 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
   },
-  todoItemButton: {
-    backgroundColor: '#f05454',
-    width: 32,
-    height: 32,
-  },
+
   inputGroup: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',

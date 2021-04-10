@@ -7,16 +7,19 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  Image,
 } from 'react-native';
-// import {firebase} from '../../firebase/config';
 
-import styles from './styles';
+import {BorderlessButton} from 'react-native-gesture-handler';
+
 import {v4} from 'uuid';
+
 import PageHeader from '../../components/PageHeader';
 
-import trashIcon from '../../assets/trash.svg';
-import {BorderlessButton} from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Feather';
+
+import styles from './styles';
+
+import {firebase} from '../../firebase/config';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -41,10 +44,6 @@ const TodoList = () => {
   //     setTodos(newTodos);
   //   });
   // }, []);
-
-  function handleGoBack() {
-    goBack();
-  }
 
   function handleAddTodo() {
     if (newTodo && newTodo.length > 0) {
@@ -74,7 +73,7 @@ const TodoList = () => {
         <BorderlessButton
           style={styles.todoItemButton}
           onPress={() => handleDeleteTodo(todo.id)}>
-          <Image source={trashIcon} />
+          <Icon name="trash" size={20} color="#f05454" />
         </BorderlessButton>
       </View>
     );
@@ -83,7 +82,6 @@ const TodoList = () => {
   return (
     <SafeAreaView style={styles.container}>
       <PageHeader title="Your Todos" />
-
       <ScrollView style={styles.todoList}>
         {todos.map(todo => (
           <TodoItem key={todo.id} todo={todo} />
@@ -111,7 +109,7 @@ const TodoList = () => {
           placeholderTextColor="#c1bccc"
         />
         <TouchableOpacity style={styles.inputButton} onPress={handleAddTodo}>
-          <Text style={styles.inputButtonText}>+</Text>
+          <Icon name="check-square" size={16} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
