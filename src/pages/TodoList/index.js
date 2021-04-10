@@ -8,36 +8,37 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
-import {firebase} from '../../firebase/config';
+// import {firebase} from '../../firebase/config';
 
 import {BorderlessButton} from 'react-native-gesture-handler';
 
 import styles from './styles';
 import {v4} from 'uuid';
+import PageHeader from '../../components/PageHeader';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
 
-  const todoRef = firebase.firestore().collection('todos');
+  // const todoRef = firebase.firestore().collection('todos');
 
   const {goBack} = useNavigation();
 
-  useEffect(() => {
-    todoRef.onSnapshot(querySnapshot => {
-      const newTodos = [];
+  // useEffect(() => {
+  //   todoRef.onSnapshot(querySnapshot => {
+  //     const newTodos = [];
 
-      querySnapshot.forEach(todo => {
-        const newTodo = todo.data();
-        newTodo.id = todo.id;
+  //     querySnapshot.forEach(todo => {
+  //       const newTodo = todo.data();
+  //       newTodo.id = todo.id;
 
-        newTodos.push(newTodo);
-        console.log(newTodo);
-      });
+  //       newTodos.push(newTodo);
+  //       console.log(newTodo);
+  //     });
 
-      setTodos(newTodos);
-    });
-  }, []);
+  //     setTodos(newTodos);
+  //   });
+  // }, []);
 
   function handleGoBack() {
     goBack();
@@ -77,22 +78,20 @@ const TodoList = () => {
     );
   };
 
-  const showNoTodos = () => {
-    return <Text style={styles.title}>GG</Text>;
-  };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.titleArea}>
-        <BorderlessButton style={styles.backButton} onPress={handleGoBack}>
-          <Text style={styles.backButtonText}>Back</Text>
-        </BorderlessButton>
-        <Text style={styles.title}>Your todo List</Text>
-      </View>
+      <PageHeader title="Your Todos" />
 
       <ScrollView style={styles.todoList}>
         {todos.map(todo => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
+        <TodoItem
+          key={1}
+          todo={{
+            content: 'lorem sadha asduba sdqauiwb asdiubq wdaudwa dawud ',
+          }}
+        />
       </ScrollView>
 
       <View style={styles.inputGroup}>
@@ -101,9 +100,10 @@ const TodoList = () => {
           value={newTodo}
           onChangeText={text => setNewTodo(text)}
           placeholder="Add new todo"
+          placeholderTextColor="#c1bccc"
         />
         <TouchableOpacity style={styles.inputButton} onPress={handleAddTodo}>
-          <Text style={styles.inputButtonText}>ADD</Text>
+          <Text style={styles.inputButtonText}>+</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

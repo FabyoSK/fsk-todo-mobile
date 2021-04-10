@@ -34,11 +34,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     marginVertical: 12,
     justifyContent: 'space-between',
+    borderRadius: 8,
   },
   todoItemText: {
     color: '#dddddd',
-    fontSize: 20,
-    lineHeight: 30,
+    fontSize: 16,
+    lineHeight: 26,
   },
   todoItemButton: {
     backgroundColor: '#f05454',
@@ -48,16 +49,17 @@ const styles = StyleSheet.create({
   },
   inputGroup: {
     flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   input: {
     height: 54,
+    width: 300,
     backgroundColor: '#FFF',
     borderRadius: 8,
     justifyContent: 'center',
     paddingHorizontal: 16,
     marginTop: 4,
     marginBottom: 16,
-    width: '80%',
   },
   inputButton: {
     backgroundColor: '#f05454',
@@ -65,7 +67,6 @@ const styles = StyleSheet.create({
     width: 50,
     borderRadius: 8,
     justifyContent: 'center',
-    width: '20%',
     paddingHorizontal: 16,
     marginTop: 4,
     marginBottom: 16,
