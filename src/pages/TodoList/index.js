@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -8,33 +8,63 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
+import {firebase} from '../../firebase/config';
+
+import {BorderlessButton} from 'react-native-gesture-handler';
+
 import styles from './styles';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
 
+  const todoRef = firebase.firestore().collection('todos');
+
   const {goBack} = useNavigation();
+
+  useEffect(() => {
+    todoRef.onSnapshot(querySnapshot => {
+      const newTodos = [];
+
+      querySnapshot.forEach(todo => {
+        const newTodo = todo.data();
+        newTodo.id = todo.id;
+
+        newTodos.push(newTodo);
+        console.log(newTodo);
+      });
+
+      setTodos(newTodos);
+    });
+  }, []);
 
   function handleGoBack() {
     goBack();
   }
 
   function handleAddTodo() {
-    if (!newTodo) {
-      return;
-    }
-    const todo = {
-      id: Math.random(),
-      content: newTodo,
-    };
-    setTodos([...todos, todo]);
-    setNewTodo('');
-  }
-  function handleDeleteTodo(id) {
-    const filtredTodo = todos.filter(todo => todo.id !== id);
+    if (newTodo && newTodo.length > 0) {
+      const todo = {
+        id: 0,
+        content: newTodo,
+      };
 
-    setTodos(filtredTodo);
+      todoRef
+        .add(todo)
+        .then(data => {
+          setTodos([...todos, todo]);
+          setNewTodo('');
+        })
+        .catch(err => {
+          alert(err);
+        });
+    }
+  }
+  async function handleDeleteTodo(id) {
+    const res = await todoRef.doc(id).delete();
+    // const filtredTodo = todos.filter(todo => todo.id !== id);
+
+    // setTodos(filtredTodo);
   }
   const TodoItem = ({todo}) => {
     return (
@@ -55,9 +85,9 @@ const TodoList = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleArea}>
-        <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
+        <BorderlessButton style={styles.backButton} onPress={handleGoBack}>
           <Text style={styles.backButtonText}>Back</Text>
-        </TouchableOpacity>
+        </BorderlessButton>
         <Text style={styles.title}>Your todo List</Text>
       </View>
 
