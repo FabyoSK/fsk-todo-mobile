@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  todoList: {},
+  todoList: {
+    marginTop: 12,
+  },
   todoItem: {
     flex: 1,
     alignItems: 'center',
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: 'row',
     marginHorizontal: 12,
-    marginVertical: 12,
+    marginVertical: 8,
     justifyContent: 'space-between',
     borderRadius: 8,
   },
@@ -43,7 +45,6 @@ const styles = StyleSheet.create({
   },
   todoItemButton: {
     backgroundColor: '#f05454',
-    fontSize: 32,
     width: 32,
     height: 32,
   },

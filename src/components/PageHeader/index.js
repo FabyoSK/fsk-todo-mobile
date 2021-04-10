@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 
-import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {BorderlessButton} from 'react-native-gesture-handler';
 
 import backIcon from '../../assets/back.png';
+import styles from './styles';
+
 const PageHeader = ({title}) => {
   const {goBack} = useNavigation();
 

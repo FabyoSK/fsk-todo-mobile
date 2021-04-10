@@ -7,14 +7,16 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  Image,
 } from 'react-native';
 // import {firebase} from '../../firebase/config';
-
-import {BorderlessButton} from 'react-native-gesture-handler';
 
 import styles from './styles';
 import {v4} from 'uuid';
 import PageHeader from '../../components/PageHeader';
+
+import trashIcon from '../../assets/trash.svg';
+import {BorderlessButton} from 'react-native-gesture-handler';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -69,11 +71,11 @@ const TodoList = () => {
     return (
       <View style={styles.todoItem}>
         <Text style={styles.todoItemText}>{todo.content}</Text>
-        <TouchableOpacity
+        <BorderlessButton
           style={styles.todoItemButton}
           onPress={() => handleDeleteTodo(todo.id)}>
-          <Text>X</Text>
-        </TouchableOpacity>
+          <Image source={trashIcon} />
+        </BorderlessButton>
       </View>
     );
   };
@@ -88,6 +90,12 @@ const TodoList = () => {
         ))}
         <TodoItem
           key={1}
+          todo={{
+            content: 'lorem sadha asduba sdqauiwb asdiubq wdaudwa dawud ',
+          }}
+        />
+        <TodoItem
+          key={2}
           todo={{
             content: 'lorem sadha asduba sdqauiwb asdiubq wdaudwa dawud ',
           }}
