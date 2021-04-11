@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     borderBottomStartRadius: 32,
     borderBottomEndRadius: 32,
   },
+
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -17,7 +18,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     color: '#FFF',
     fontSize: 32,
-    maxWidth: 160,
+    fontFamily: 'Poppins',
+    fontWeight: '500',
   },
 });
 

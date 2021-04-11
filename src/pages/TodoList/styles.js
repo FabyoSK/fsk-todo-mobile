@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     color: '#dddddd',
     fontSize: 32,
     textAlign: 'center',
-    fontWeight: '700',
   },
 
   backButton: {
@@ -24,6 +23,7 @@ const styles = StyleSheet.create({
   backButtonText: {
     color: '#dddddd',
     textAlign: 'center',
+    fontFamily: 'Poppins',
   },
 
   todoList: {
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     color: '#dddddd',
     fontSize: 16,
     lineHeight: 26,
+    fontFamily: 'Poppins',
   },
 
   inputGroup: {
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
 
   inputButtonText: {
     textAlign: 'center',
+    fontFamily: 'Poppins',
   },
 });
 

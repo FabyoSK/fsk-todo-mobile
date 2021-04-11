@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#222831',
   },
+
   header: {
     backgroundColor: '#f05454',
     paddingVertical: 150,
@@ -12,10 +13,12 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 32,
     marginBottom: 32,
   },
+
   title: {
     color: '#dddddd',
     fontSize: 52,
     textAlign: 'center',
+    fontFamily: 'Poppins',
     fontWeight: '700',
   },
 
@@ -26,6 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 22,
   },
+
   githubButton: {
     backgroundColor: '#30475e',
     marginVertical: 12,
@@ -33,10 +37,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 22,
   },
+
   buttonText: {
     color: '#dddddd',
     fontSize: 32,
     textAlign: 'center',
+    fontFamily: 'Poppins',
   },
 });
 

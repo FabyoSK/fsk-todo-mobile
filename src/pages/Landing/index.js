@@ -1,13 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity,
-  StatusBar,
-  Linking,
-} from 'react-native';
+import {Text, View, Linking} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import styles from './styles';
 
@@ -20,12 +13,13 @@ const Landing = () => {
   function handleOpenGithub() {
     Linking.openURL('https://github.com/FabyoSK/fsk-todo-mobile');
   }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle={'light-content'} />
+    <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Todo | FSK</Text>
+        <Text style={styles.title}>Todo FSK</Text>
       </View>
+
       <View style={styles.buttonContainer}>
         <RectButton
           style={styles.startButton}
@@ -36,7 +30,7 @@ const Landing = () => {
           <Text style={styles.buttonText}>GitHub</Text>
         </RectButton>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

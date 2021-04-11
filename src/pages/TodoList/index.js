@@ -51,11 +51,12 @@ const TodoList = () => {
         content: newTodo,
         createdAt: timestamp,
       };
-
       todoRef.add(todo).then(data => {
         setTodos([...todos, todo]);
         setNewTodo('');
       });
+    } else {
+      alert('Cannot add empty Todo');
     }
   }
   async function handleDeleteTodo(id) {
@@ -69,10 +70,11 @@ const TodoList = () => {
     return (
       <View style={styles.todoItem}>
         <Text style={styles.todoItemText}>{todo.content}</Text>
+
         <BorderlessButton
           style={styles.todoItemButton}
           onPress={() => handleDeleteTodo(todo.fire_id)}>
-          <Icon name="trash" size={16} color="#f05454" />
+          <Icon name="trash" size={20} color="#f05454" />
         </BorderlessButton>
       </View>
     );
@@ -81,6 +83,7 @@ const TodoList = () => {
   return (
     <SafeAreaView style={styles.container}>
       <PageHeader title="Your Todos" />
+
       <ScrollView style={styles.todoList}>
         {todos.map(todo => (
           <TodoItem key={todo.id} todo={todo} />
@@ -96,7 +99,7 @@ const TodoList = () => {
           placeholderTextColor="#c1bccc"
         />
         <RectButton style={styles.inputButton} onPress={handleAddTodo}>
-          <Icon name="check-square" size={16} color="#FFFFFF" />
+          <Icon name="check-square" size={20} color="#FFFFFF" />
         </RectButton>
       </View>
     </SafeAreaView>
