@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   StatusBar,
+  Linking,
 } from 'react-native';
 import styles from './styles';
 
@@ -15,7 +16,9 @@ const Landing = () => {
   function handleNavigateToViewTodo() {
     navigate('TodoList');
   }
-
+  function handleOpenGithub() {
+    Linking.openURL('https://github.com/FabyoSK/fsk-todo-mobile');
+  }
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={'light-content'} />
@@ -28,7 +31,9 @@ const Landing = () => {
           onPress={handleNavigateToViewTodo}>
           <Text style={styles.buttonText}>View Todos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.githubButton}>
+        <TouchableOpacity
+          style={styles.githubButton}
+          onPress={handleOpenGithub}>
           <Text style={styles.buttonText}>GitHub</Text>
         </TouchableOpacity>
       </View>

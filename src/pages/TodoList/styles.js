@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '700',
   },
+
   backButton: {
     backgroundColor: '#f05454',
     height: 50,
@@ -19,25 +20,28 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
   },
+
   backButtonText: {
     color: '#dddddd',
     textAlign: 'center',
   },
 
   todoList: {
-    marginTop: 12,
+    marginVertical: 12,
   },
+
   todoItem: {
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#30475e',
-    padding: 12,
+    padding: 20,
     flexDirection: 'row',
     marginHorizontal: 12,
     marginVertical: 8,
     justifyContent: 'space-between',
     borderRadius: 8,
   },
+
   todoItemText: {
     color: '#dddddd',
     fontSize: 16,
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
+
   input: {
     height: 54,
     width: 300,
@@ -58,8 +63,9 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 16,
   },
+
   inputButton: {
-    backgroundColor: '#f05454',
+    backgroundColor: '#3fad27',
     height: 54,
     width: 50,
     borderRadius: 8,
@@ -68,6 +74,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 16,
   },
+
   inputButtonText: {
     textAlign: 'center',
   },

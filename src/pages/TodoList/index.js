@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
 import {
   Text,
@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 
 import {BorderlessButton} from 'react-native-gesture-handler';
-
+//import AsyncStorage from '@react-native-community/async-storage';
 import {v4} from 'uuid';
 
 import PageHeader from '../../components/PageHeader';
 
 import Icon from 'react-native-vector-icons/Feather';
+Icon.loadFont();
 
 import styles from './styles';
 
@@ -25,55 +26,54 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
 
-  // const todoRef = firebase.firestore().collection('todos');
+  const todoRef = firebase.firestore().collection('todos');
 
-  const {goBack} = useNavigation();
+  useEffect(() => {
+    todoRef.orderBy('createdAt', 'desc').onSnapshot(querySnapshot => {
+      const newTodos = [];
 
-  // useEffect(() => {
-  //   todoRef.onSnapshot(querySnapshot => {
-  //     const newTodos = [];
+      querySnapshot.forEach(todo => {
+        const newTodo = todo.data();
+        newTodo.fire_id = todo.id;
 
-  //     querySnapshot.forEach(todo => {
-  //       const newTodo = todo.data();
-  //       newTodo.id = todo.id;
+        newTodos.push(newTodo);
+        console.log(newTodo);
+      });
 
-  //       newTodos.push(newTodo);
-  //       console.log(newTodo);
-  //     });
-
-  //     setTodos(newTodos);
-  //   });
-  // }, []);
+      setTodos(newTodos);
+    });
+  }, []);
 
   function handleAddTodo() {
     if (newTodo && newTodo.length > 0) {
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
       const todo = {
         id: v4(),
         content: newTodo,
+        createdAt: timestamp,
       };
 
-      todoRef
-        .add(todo)
-        .then(data => {
-          setTodos([...todos, todo]);
-          setNewTodo('');
-        })
-        .catch(err => {
-          alert(err);
-        });
+      todoRef.add(todo).then(data => {
+        setTodos([...todos, todo]);
+        setNewTodo('');
+      });
     }
   }
   async function handleDeleteTodo(id) {
     const res = await todoRef.doc(id).delete();
+
+    filterTodos = todos.filter(todo => todo.fire_id !== id);
+    setTodos(filterTodos);
   }
+
   const TodoItem = ({todo}) => {
     return (
       <View style={styles.todoItem}>
         <Text style={styles.todoItemText}>{todo.content}</Text>
         <BorderlessButton
           style={styles.todoItemButton}
-          onPress={() => handleDeleteTodo(todo.id)}>
-          <Icon name="trash" size={20} color="#f05454" />
+          onPress={() => handleDeleteTodo(todo.fire_id)}>
+          <Icon name="trash" size={16} color="#f05454" />
         </BorderlessButton>
       </View>
     );
@@ -86,18 +86,6 @@ const TodoList = () => {
         {todos.map(todo => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
-        <TodoItem
-          key={1}
-          todo={{
-            content: 'lorem sadha asduba sdqauiwb asdiubq wdaudwa dawud ',
-          }}
-        />
-        <TodoItem
-          key={2}
-          todo={{
-            content: 'lorem sadha asduba sdqauiwb asdiubq wdaudwa dawud ',
-          }}
-        />
       </ScrollView>
 
       <View style={styles.inputGroup}>
