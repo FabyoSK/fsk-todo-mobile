@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native';
 
-import {BorderlessButton} from 'react-native-gesture-handler';
+import {BorderlessButton, RectButton} from 'react-native-gesture-handler';
 //import AsyncStorage from '@react-native-community/async-storage';
 import {v4} from 'uuid';
 
@@ -37,7 +37,6 @@ const TodoList = () => {
         newTodo.fire_id = todo.id;
 
         newTodos.push(newTodo);
-        console.log(newTodo);
       });
 
       setTodos(newTodos);
@@ -96,9 +95,9 @@ const TodoList = () => {
           placeholder="Add new todo"
           placeholderTextColor="#c1bccc"
         />
-        <TouchableOpacity style={styles.inputButton} onPress={handleAddTodo}>
+        <RectButton style={styles.inputButton} onPress={handleAddTodo}>
           <Icon name="check-square" size={16} color="#FFFFFF" />
-        </TouchableOpacity>
+        </RectButton>
       </View>
     </SafeAreaView>
   );

@@ -8,6 +8,7 @@ import {
   StatusBar,
   Linking,
 } from 'react-native';
+import {RectButton} from 'react-native-gesture-handler';
 import styles from './styles';
 
 const Landing = () => {
@@ -26,16 +27,14 @@ const Landing = () => {
         <Text style={styles.title}>Todo | FSK</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
+        <RectButton
           style={styles.startButton}
           onPress={handleNavigateToViewTodo}>
           <Text style={styles.buttonText}>View Todos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.githubButton}
-          onPress={handleOpenGithub}>
+        </RectButton>
+        <RectButton style={styles.githubButton} onPress={handleOpenGithub}>
           <Text style={styles.buttonText}>GitHub</Text>
-        </TouchableOpacity>
+        </RectButton>
       </View>
     </SafeAreaView>
   );
